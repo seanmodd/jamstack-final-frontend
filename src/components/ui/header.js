@@ -1,44 +1,44 @@
-import React, { useState, useContext } from "react"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
-import IconButton from "@material-ui/core/IconButton"
-import Tabs from "@material-ui/core/Tabs"
-import Tab from "@material-ui/core/Tab"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import Hidden from "@material-ui/core/Hidden"
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
-import Badge from "@material-ui/core/Badge"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
-import { makeStyles } from "@material-ui/core/styles"
-import { Link, navigate } from "gatsby"
+import React, { useState, useContext } from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Hidden from '@material-ui/core/Hidden'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import Badge from '@material-ui/core/Badge'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import { makeStyles } from '@material-ui/core/styles'
+import { Link, navigate } from 'gatsby'
 
-import { CartContext } from "../../contexts"
-import { useIsClient } from "../../hooks"
+import { CartContext } from '../../contexts'
+import { useIsClient } from '../../hooks'
 
-import search from "../../images/search.svg"
-import cartIcon from "../../images/cart.svg"
-import account from "../../images/account-header.svg"
-import menu from "../../images/menu.svg"
+import search from '../../images/search.svg'
+import cartIcon from '../../images/cart.svg'
+import account from '../../images/account-header.svg'
+import menu from '../../images/menu.svg'
 
 const useStyles = makeStyles(theme => ({
   coloredIndicator: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
   logo: {
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "3rem",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '3rem',
     },
   },
   logoText: {
     color: theme.palette.common.offBlack,
   },
   logoContainer: {
-    [theme.breakpoints.down("md")]: {
-      marginRight: "auto",
+    [theme.breakpoints.down('md')]: {
+      marginRight: 'auto',
     },
   },
   tab: {
@@ -46,31 +46,31 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 500,
   },
   tabs: {
-    marginLeft: "auto",
-    marginRight: "auto",
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   icon: {
-    height: "3rem",
-    width: "3rem",
-    [theme.breakpoints.down("xs")]: {
-      height: "2rem",
-      width: "2rem",
+    height: '3rem',
+    width: '3rem',
+    [theme.breakpoints.down('xs')]: {
+      height: '2rem',
+      width: '2rem',
     },
   },
   drawer: {
     backgroundColor: theme.palette.primary.main,
   },
   listItemText: {
-    color: "#fff",
+    color: '#fff',
   },
   badge: {
-    fontSize: "1rem",
-    color: "#fff",
+    fontSize: '1rem',
+    color: '#fff',
     backgroundColor: theme.palette.secondary.main,
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "0.75rem",
-      height: "1.1rem",
-      width: "1.1rem",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.75rem',
+      height: '1.1rem',
+      width: '1.1rem',
       minWidth: 0,
     },
   },
@@ -80,16 +80,21 @@ export default function Header({ categories }) {
   const classes = useStyles()
   const { cart } = useContext(CartContext)
   const { isClient, key } = useIsClient()
-  const matchesMD = useMediaQuery(theme => theme.breakpoints.down("md"))
+  const matchesMD = useMediaQuery(theme => theme.breakpoints.down('md'))
 
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  const iOS =
+    typeof window !== 'undefined' &&
+    window &&
+    window.window === window &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const activeIndex = () => {
     const pathname =
-      typeof window !== "undefined"
-        ? window.location.pathname.split("/")[1]
+      typeof window !== 'undefined'
+        ? window.location.pathname.split('/')[1]
         : null
 
     const found = routes.indexOf(
@@ -104,7 +109,7 @@ export default function Header({ categories }) {
 
   const routes = [
     ...categories,
-    { node: { name: "Contact Us", strapiId: "contact", link: "/contact" } },
+    { node: { name: 'Contact Us', strapiId: 'contact', link: '/contact' } },
   ]
 
   const tabs = (
@@ -136,7 +141,7 @@ export default function Header({ categories }) {
       <List disablePadding>
         {[
           ...routes,
-          { node: { name: "Account", strapiId: "account", link: "/account" } },
+          { node: { name: 'Account', strapiId: 'account', link: '/account' } },
         ].map((route, i) => (
           <ListItem
             selected={!isClient ? false : activeIndex() === i}
@@ -159,15 +164,15 @@ export default function Header({ categories }) {
   const actions = [
     {
       icon: search,
-      alt: "search",
+      alt: 'search',
       visible: true,
-      onClick: () => console.log("search"),
+      onClick: () => console.log('search'),
     },
-    { icon: cartIcon, alt: "cart", visible: true, link: "/cart" },
-    { icon: account, alt: "account", visible: !matchesMD, link: "/account" },
+    { icon: cartIcon, alt: 'cart', visible: true, link: '/cart' },
+    { icon: account, alt: 'account', visible: !matchesMD, link: '/account' },
     {
       icon: menu,
-      alt: "menu",
+      alt: 'menu',
       visible: matchesMD,
       onClick: () => setDrawerOpen(true),
     },
@@ -199,7 +204,7 @@ export default function Header({ categories }) {
                 component={action.onClick ? undefined : Link}
                 to={action.onClick ? undefined : action.link}
               >
-                {action.alt === "cart" ? (
+                {action.alt === 'cart' ? (
                   <Badge
                     key={key}
                     overlap="circle"
