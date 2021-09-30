@@ -74,16 +74,16 @@ exports.createPages = async ({ graphql, actions }) => {
   products.forEach(product => {
     createPage({
       path: `/${product.node.category.name.toLowerCase()}/${
-        product.node.name.split(" ")[0]
+        product.node.name.split(' ')[0]
       }`,
-      component: require.resolve("./src/templates/ProductDetail.js"),
+      component: require.resolve('./src/templates/ProductDetail.js'),
       context: {
         name: product.node.name,
         id: product.node.strapiId,
         category: product.node.category.name,
         description: product.node.description,
         variants: product.node.variants,
-        product: product,
+        product,
       },
     })
   })
@@ -91,7 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
   categories.forEach(category => {
     createPage({
       path: `/${category.node.name.toLowerCase()}`,
-      component: require.resolve("./src/templates/ProductList.js"),
+      component: require.resolve('./src/templates/ProductList.js'),
       context: {
         name: category.node.name,
         description: category.node.description,
@@ -103,11 +103,46 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === "build-html") {
+  if (stage === 'build-html') {
     actions.setWebpackConfig({
       module: {
         rules: [{ test: /react-spring-3d-carousel/, use: loaders.null() }],
       },
+    }, 
+        )
+  }
+}
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /bad-module/,
+            use: loaders.null(),
+          },
+        ],
+      },
     })
   }
 }
+
+
+// exports.onCreateNode = ({ node, actions, reporter }) => {
+//   const { createNodeField } = actions
+
+//   reporter.info(`>>>>${node.internal.type}`)
+//   if (node.internal.type === 'StrapiProduct') {
+//     const slug = `/${node.category.name.toLowerCase()}/${
+//       node.name.split(' ')[0]
+//     }`
+
+//     createNodeField({
+//       node,
+//       name: 'slug',
+//       value: slug,
+//     })
+//   }
+// }
+
