@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react"
-import { useQuery } from "@apollo/client"
-import Grid from "@material-ui/core/Grid"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
+import React, { useState, useEffect } from 'react'
+import { useQuery } from '@apollo/client'
+import Grid from '@material-ui/core/Grid'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import Layout from "../components/ui/layout"
-import SEO from "../components/ui/seo"
-import ProductImages from "../components/product-detail/ProductImages"
-import ProductInfo from "../components/product-detail/ProductInfo"
-import RecentlyViewed from "../components/product-detail/RecentlyViewed"
-import ProductReviews from "../components/product-detail/ProductReviews"
+import Layout from '../components/ui/layout'
+import SEO from '../components/ui/seo'
+import ProductImages from '../components/product-detail/ProductImages'
+import ProductInfo from '../components/product-detail/ProductInfo'
+import RecentlyViewed from '../components/product-detail/RecentlyViewed'
+import ProductReviews from '../components/product-detail/ProductReviews'
 
-import { GET_DETAILS } from "../apollo/queries"
+import { GET_DETAILS } from '../apollo/queries'
 
 export default function ProductDetail({
   pageContext: { name, id, category, description, variants, product },
@@ -21,17 +21,17 @@ export default function ProductDetail({
   const [rating, setRating] = useState(0)
   const [edit, setEdit] = useState(false)
 
-  const matchesMD = useMediaQuery(theme => theme.breakpoints.down("md"))
+  const matchesMD = useMediaQuery(theme => theme.breakpoints.down('md'))
 
   const params =
-    typeof window !== "undefined"
+    typeof window !== 'undefined'
       ? new URLSearchParams(window.location.search)
       : { get: () => null }
-  const style = params.get("style")
+  const style = params.get('style')
 
   const recentlyViewedProducts =
-    typeof window !== "undefined"
-      ? JSON.parse(window.localStorage.getItem("recentlyViewed"))
+    typeof window !== 'undefined'
+      ? JSON.parse(window.localStorage.getItem('recentlyViewed'))
       : null
 
   const { loading, error, data } = useQuery(GET_DETAILS, {
@@ -49,13 +49,13 @@ export default function ProductDetail({
 
   useEffect(() => {
     const styledVariant = variants.filter(
-      variant => variant.style === params.get("style")
+      variant => variant.style === params.get('style')
     )[0]
 
     const variantIndex = variants.indexOf(styledVariant)
 
-    var recentlyViewed = JSON.parse(
-      window.localStorage.getItem("recentlyViewed")
+    let recentlyViewed = JSON.parse(
+      window.localStorage.getItem('recentlyViewed')
     )
 
     if (recentlyViewed) {
@@ -77,20 +77,20 @@ export default function ProductDetail({
     }
 
     window.localStorage.setItem(
-      "recentlyViewed",
+      'recentlyViewed',
       JSON.stringify(recentlyViewed)
     )
 
     setSelectedVariant(variantIndex)
   }, [style])
-
+  console.log('These are the variants: ', variants[selectedVariant])
   return (
     <Layout>
-      <SEO title={name.split(" ")[0]} description={description} />
+      <SEO title={name.split(' ')[0]} description={description} />
       <Grid container direction="column">
-        <Grid item container direction={matchesMD ? "column" : "row"}>
+        <Grid item container direction={matchesMD ? 'column' : 'row'}>
           <ProductImages
-            images={variants[selectedVariant].images}
+            images={variants[selectedVariant]?.images}
             selectedImage={selectedImage}
             setSelectedImage={setSelectedImage}
           />

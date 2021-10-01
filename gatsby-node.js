@@ -73,9 +73,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   products.forEach(product => {
     createPage({
-      path: `/${product.node.category.name.toLowerCase()}/${
-        product.node.name.split(' ')[0]
-      }`,
+      path: `/${product.node.category.name.toLowerCase()}/${product.node.name
+        .split(' ')[0]
+        .toLowerCase()}`,
       component: require.resolve('./src/templates/ProductDetail.js'),
       context: {
         name: product.node.name,
@@ -108,8 +108,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       module: {
         rules: [{ test: /react-spring-3d-carousel/, use: loaders.null() }],
       },
-    }, 
-        )
+    })
   }
 }
 
@@ -128,7 +127,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   }
 }
 
-
 // exports.onCreateNode = ({ node, actions, reporter }) => {
 //   const { createNodeField } = actions
 
@@ -145,4 +143,3 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 //     })
 //   }
 // }
-
