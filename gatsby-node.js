@@ -102,6 +102,11 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
+exports.modifyBabelrc = ({ babelrc }) => ({
+  ...babelrc,
+  plugins: babelrc.plugins.concat(['transform-regenerator']),
+})
+
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html') {
     actions.setWebpackConfig({

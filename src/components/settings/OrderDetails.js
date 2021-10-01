@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import Grid from '@material-ui/core/Grid'
 import Chip from '@material-ui/core/Chip'
@@ -8,7 +8,6 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Hidden from '@material-ui/core/Hidden'
 import { makeStyles } from '@material-ui/core/styles'
-
 import OrderDetailItem from './OrderDetailItem'
 
 const useStyles = makeStyles(theme => ({
