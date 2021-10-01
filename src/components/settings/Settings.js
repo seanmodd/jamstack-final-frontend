@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PK)
+const stripePromise = loadStripe(`${process.env.GATSBY_STRIPE_PK}`)
 
 export default function Settings({ setSelectedSetting }) {
   const classes = useStyles()

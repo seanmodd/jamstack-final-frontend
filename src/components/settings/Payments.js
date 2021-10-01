@@ -79,6 +79,7 @@ const useStyles = makeStyles(theme => ({
   form: {
     width: '75%',
     borderBottom: '2px solid #fff',
+    zIndex: '9999',
     height: '2rem',
     marginTop: '-1rem',
     [theme.breakpoints.down('xs')]: {

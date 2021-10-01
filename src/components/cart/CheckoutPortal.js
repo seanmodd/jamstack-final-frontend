@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PK)
+const stripePromise = loadStripe(`${process.env.GATSBY_STRIPE_PK}`)
 
 export default function CheckoutPortal({ user }) {
   const classes = useStyles()
