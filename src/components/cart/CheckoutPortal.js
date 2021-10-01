@@ -1,42 +1,43 @@
-import React, { useState, useEffect, useContext } from "react"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import { makeStyles } from "@material-ui/core/styles"
-import { Elements } from "@stripe/react-stripe-js"
-import { loadStripe } from "@stripe/stripe-js"
+import React, { useState, useEffect, useContext } from 'react'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 
-import CheckoutNavigation from "./CheckoutNavigation"
-import BillingConfirmation from "./BillingConfirmation"
-import Details from "../settings/Details"
-import Location from "../settings/Location"
-import Payments from "../settings/Payments"
-import Shipping from "./Shipping"
-import Confirmation from "./Confirmation"
-import ThankYou from "./ThankYou"
-import validate from "../ui/validate"
+import CheckoutNavigation from './CheckoutNavigation'
+import BillingConfirmation from './BillingConfirmation'
+import Details from '../settings/Details'
+import Location from '../settings/Location'
+import Payments from '../settings/Payments'
+import Shipping from './Shipping'
+import Confirmation from './Confirmation'
+import ThankYou from './ThankYou'
+import validate from '../ui/validate'
 
-import { CartContext } from "../../contexts"
+import { CartContext } from '../../contexts'
 
 const useStyles = makeStyles(theme => ({
   stepContainer: {
-    width: "40rem",
-    height: "25rem",
+    width: '40rem',
+    height: '25rem',
     backgroundColor: theme.palette.primary.main,
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
     },
   },
   container: {
-    [theme.breakpoints.down("md")]: {
-      marginBottom: "5rem",
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '5rem',
     },
   },
-  "@global": {
-    ".MuiInput-underline:before, .MuiInput-underline:hover:not(.Mui-disabled):before": {
-      borderBottom: "2px solid #fff",
-    },
-    ".MuiInput-underline:after": {
+  '@global': {
+    '.MuiInput-underline:before, .MuiInput-underline:hover:not(.Mui-disabled):before':
+      {
+        borderBottom: '2px solid #fff',
+      },
+    '.MuiInput-underline:after': {
       borderBottom: `2px solid ${theme.palette.secondary.main}`,
     },
   },
@@ -47,36 +48,36 @@ const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PK)
 export default function CheckoutPortal({ user }) {
   const classes = useStyles()
   const { cart } = useContext(CartContext)
-  const matchesMD = useMediaQuery(theme => theme.breakpoints.down("md"))
+  const matchesMD = useMediaQuery(theme => theme.breakpoints.down('md'))
 
   const hasSubscriptionCart = cart.some(item => item.subscription)
   const hasSubscriptionActive = user.subscriptions?.length > 0
 
   const [selectedStep, setSelectedStep] = useState(0)
   const [detailValues, setDetailValues] = useState({
-    name: "",
-    email: "",
-    phone: "",
+    name: '',
+    email: '',
+    phone: '',
   })
   const [billingDetails, setBillingDetails] = useState({
-    name: "",
-    email: "",
-    phone: "",
+    name: '',
+    email: '',
+    phone: '',
   })
   const [detailSlot, setDetailSlot] = useState(0)
   const [detailForBilling, setDetailForBilling] = useState(false)
 
   const [locationValues, setLocationValues] = useState({
-    street: "",
-    zip: "",
-    city: "",
-    state: "",
+    street: '',
+    zip: '',
+    city: '',
+    state: '',
   })
   const [billingLocation, setBillingLocation] = useState({
-    street: "",
-    zip: "",
-    city: "",
-    state: "",
+    street: '',
+    zip: '',
+    city: '',
+    state: '',
   })
   const [locationSlot, setLocationSlot] = useState(0)
   const [locationForBilling, setLocationForBilling] = useState(false)
@@ -84,7 +85,7 @@ export default function CheckoutPortal({ user }) {
   const [cardSlot, setCardSlot] = useState(0)
   const [cardError, setCardError] = useState(true)
   const [saveCard, setSaveCard] = useState(hasSubscriptionCart)
-  const [card, setCard] = useState({ brand: "", last4: "" })
+  const [card, setCard] = useState({ brand: '', last4: '' })
 
   const [errors, setErrors] = useState({})
 
@@ -92,39 +93,37 @@ export default function CheckoutPortal({ user }) {
 
   const [selectedShipping, setSelectedShipping] = useState(null)
   const shippingOptions = [
-    { label: "FREE SHIPPING", price: 0 },
-    { label: "2-DAY SHIPPING", price: 9.99 },
-    { label: "OVERNIGHT SHIPPING", price: 29.99 },
+    { label: 'FREE SHIPPING', price: 0 },
+    { label: '2-DAY SHIPPING', price: 9.99 },
+    { label: 'OVERNIGHT SHIPPING', price: 29.99 },
   ]
 
   const errorHelper = (values, forBilling, billingValues, slot) => {
     const valid = validate(values)
 
-    //If we have one slot marked as billing...
+    // If we have one slot marked as billing...
     if (forBilling !== false && forBilling !== undefined) {
-      //...validate billing values
+      // ...validate billing values
       const billingValid = validate(billingValues)
 
-      //If we are currently on the same slot as marked for billing, ie billing and shipping are the same...
+      // If we are currently on the same slot as marked for billing, ie billing and shipping are the same...
       if (forBilling === slot) {
-        //...then we just need to validate the one set of values because they are the same
+        // ...then we just need to validate the one set of values because they are the same
         return Object.keys(billingValid).some(value => !billingValid[value])
-      } else {
-        //Otherwise, if we are currently on a different slot than the slot marked for billing, ie billing and shipping are different, then we need to validate both the billing values, and the shipping values
-        return (
-          Object.keys(billingValid).some(value => !billingValid[value]) ||
-          Object.keys(valid).some(value => !valid[value])
-        )
       }
-    } else {
-      //if no slots were marked for billing, just validate current slot
-      return Object.keys(valid).some(value => !valid[value])
+      // Otherwise, if we are currently on a different slot than the slot marked for billing, ie billing and shipping are different, then we need to validate both the billing values, and the shipping values
+      return (
+        Object.keys(billingValid).some(value => !billingValid[value]) ||
+        Object.keys(valid).some(value => !valid[value])
+      )
     }
+    // if no slots were marked for billing, just validate current slot
+    return Object.keys(valid).some(value => !valid[value])
   }
 
   let steps = [
     {
-      title: "Contact Info",
+      title: 'Contact Info',
       component: (
         <Details
           user={user}
@@ -151,7 +150,7 @@ export default function CheckoutPortal({ user }) {
       ),
     },
     {
-      title: "Billing Info",
+      title: 'Billing Info',
       component: (
         <Details
           values={billingDetails}
@@ -166,7 +165,7 @@ export default function CheckoutPortal({ user }) {
       error: errorHelper(billingDetails),
     },
     {
-      title: "Address",
+      title: 'Address',
       component: (
         <Location
           user={user}
@@ -193,7 +192,7 @@ export default function CheckoutPortal({ user }) {
       ),
     },
     {
-      title: "Billing Address",
+      title: 'Billing Address',
       component: (
         <Location
           values={billingLocation}
@@ -208,7 +207,7 @@ export default function CheckoutPortal({ user }) {
       error: errorHelper(billingLocation),
     },
     {
-      title: "Shipping",
+      title: 'Shipping',
       component: (
         <Shipping
           selectedStep={selectedStep}
@@ -220,7 +219,7 @@ export default function CheckoutPortal({ user }) {
       error: selectedShipping === null,
     },
     {
-      title: "Payment",
+      title: 'Payment',
       component: (
         <Payments
           setCard={setCard}
@@ -239,7 +238,7 @@ export default function CheckoutPortal({ user }) {
       error: cardError,
     },
     {
-      title: "Confirmation",
+      title: 'Confirmation',
       component: (
         <Confirmation
           user={user}
@@ -262,7 +261,7 @@ export default function CheckoutPortal({ user }) {
       ),
     },
     {
-      title: `Thanks, ${user.username.split(" ")[0]}!`,
+      title: `Thanks, ${user.username.split(' ')[0]}!`,
       component: (
         <ThankYou
           selectedStep={selectedStep}
@@ -274,11 +273,11 @@ export default function CheckoutPortal({ user }) {
   ]
 
   if (detailForBilling !== false) {
-    steps = steps.filter(step => step.title !== "Billing Info")
+    steps = steps.filter(step => step.title !== 'Billing Info')
   }
 
   if (locationForBilling !== false) {
-    steps = steps.filter(step => step.title !== "Billing Address")
+    steps = steps.filter(step => step.title !== 'Billing Address')
   }
 
   useEffect(() => {
@@ -291,7 +290,7 @@ export default function CheckoutPortal({ user }) {
       container
       direction="column"
       classes={{ root: classes.container }}
-      alignItems={matchesMD ? "flex-start" : "flex-end"}
+      alignItems={matchesMD ? 'flex-start' : 'flex-end'}
       lg={6}
     >
       <CheckoutNavigation
@@ -322,7 +321,7 @@ export default function CheckoutPortal({ user }) {
           )}
         </Elements>
       </Grid>
-      {steps[selectedStep].title === "Confirmation" && (
+      {steps[selectedStep].title === 'Confirmation' && (
         <BillingConfirmation
           detailForBilling={detailForBilling}
           billingDetails={billingDetails}
