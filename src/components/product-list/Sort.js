@@ -1,19 +1,19 @@
-import React from "react"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import IconButton from "@material-ui/core/IconButton"
-import Chip from "@material-ui/core/Chip"
-import clsx from "clsx"
-import { makeStyles } from "@material-ui/core/styles"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
+import React from 'react'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import Chip from '@material-ui/core/Chip'
+import clsx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import sort from "../../images/sort.svg"
-import close from "../../images/close-outline.svg"
+import sort from '../../images/sort.svg'
+import close from '../../images/close-outline.svg'
 
 const useStyles = makeStyles(theme => ({
   chipContainer: {
-    [theme.breakpoints.down("md")]: {
-      margin: "0.5rem",
+    [theme.breakpoints.down('md')]: {
+      margin: '0.5rem',
     },
   },
   notActive: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Sort({ setOption, sortOptions, setSortOptions }) {
   const classes = useStyles()
-  const matchesXS = useMediaQuery(theme => theme.breakpoints.down("xs"))
+  const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
 
   const handleSort = i => {
     const newOptions = [...sortOptions]
@@ -36,7 +36,7 @@ export default function Sort({ setOption, sortOptions, setSortOptions }) {
   }
 
   return (
-    <Grid item container justify="space-between" alignItems="center">
+    <Grid item container justifyContent="space-between" alignItems="center">
       <Grid item>
         <IconButton onClick={() => setOption(null)}>
           <img src={sort} alt="sort" />
@@ -45,9 +45,9 @@ export default function Sort({ setOption, sortOptions, setSortOptions }) {
       <Grid item xs>
         <Grid
           container
-          justify="space-around"
-          alignItems={matchesXS ? "center" : undefined}
-          direction={matchesXS ? "column" : "row"}
+          justifyContent="space-around"
+          alignItems={matchesXS ? 'center' : undefined}
+          direction={matchesXS ? 'column' : 'row'}
         >
           {sortOptions.map((option, i) => (
             <Grid
@@ -58,7 +58,7 @@ export default function Sort({ setOption, sortOptions, setSortOptions }) {
               <Chip
                 label={option.label}
                 onClick={() => handleSort(i)}
-                color={option.active !== true ? "primary" : "secondary"}
+                color={option.active !== true ? 'primary' : 'secondary'}
                 classes={{
                   root: clsx({
                     [classes.notActive]: option.active !== true,

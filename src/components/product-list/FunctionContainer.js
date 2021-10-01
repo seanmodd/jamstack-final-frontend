@@ -55,7 +55,7 @@ export default function FunctionContainer({
         ]
 
         return (
-          <Grid item container justify="space-around" alignItems="center">
+          <Grid item container justifyContent="space-around" alignItems="center">
             {items.map(item => (
               <Grid item key={item.alt}>
                 <IconButton onClick={() => setOption(item.alt)}>

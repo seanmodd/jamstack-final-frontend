@@ -168,7 +168,7 @@ export default function SignUp({
           )}
         </Button>
       </Grid>
-      <Grid item container justify="space-between">
+      <Grid item container justifyContent="space-between">
         <Grid item>
           <IconButton onClick={() => handleNavigate("backward")}>
             <img

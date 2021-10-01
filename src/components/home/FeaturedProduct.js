@@ -120,7 +120,7 @@ export default function FeaturedProduct({
     <Grid
       item
       container
-      justify={alignment}
+      justifyContent={alignment}
       key={node.strapiId}
       classes={{ root: classes.productContainer }}
       alignItems="center"

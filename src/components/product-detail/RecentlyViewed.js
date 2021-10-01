@@ -52,7 +52,7 @@ export default function RecentlyViewed({ products }) {
       item
       key={key}
       container
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       classes={{ root: classes.recentContainer }}
     >

@@ -55,7 +55,7 @@ export default function Complete({ user, dispatchUser }) {
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container justify="flex-end">
+      <Grid item container justifyContent="flex-end">
         <Grid item classes={{ root: classes.shopContainer }}>
           <Button>
             <Typography variant="h3" classes={{ root: classes.text }}>

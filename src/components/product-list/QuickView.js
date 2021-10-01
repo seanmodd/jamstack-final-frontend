@@ -132,14 +132,14 @@ export default function QuickView({
           <Grid
             item
             container
-            justify="center"
+            justifyContent="center"
             classes={{ root: classes.toolbar }}
           >
             <Grid item classes={{ root: classes.infoItem }}>
               <Grid
                 container
                 direction="column"
-                justify="space-between"
+                justifyContent="space-between"
                 classes={{ root: classes.infoContainer }}
                 component={Link}
                 to={`/${product.node.category.name.toLowerCase()}/${product.node.name

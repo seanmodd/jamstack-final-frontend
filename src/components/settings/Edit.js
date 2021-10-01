@@ -1,29 +1,29 @@
-import React, { useContext, useState } from "react"
-import axios from "axios"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import IconButton from "@material-ui/core/IconButton"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import { makeStyles } from "@material-ui/core/styles"
+import React, { useContext, useState } from 'react'
+import axios from 'axios'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { makeStyles } from '@material-ui/core/styles'
 
-import Confirmation from "./Confirmation"
+import Confirmation from './Confirmation'
 
-import { FeedbackContext } from "../../contexts"
-import { setSnackbar, setUser } from "../../contexts/actions"
+import { FeedbackContext } from '../../contexts'
+import { setSnackbar, setUser } from '../../contexts/actions'
 
-import BackwardsIcon from "../../images/BackwardsOutline"
-import editIcon from "../../images/edit.svg"
-import saveIcon from "../../images/save.svg"
+import BackwardsIcon from '../../images/BackwardsOutline'
+import editIcon from '../../images/edit.svg'
+import saveIcon from '../../images/save.svg'
 
 const useStyles = makeStyles(theme => ({
   icon: {
-    height: "8rem",
-    width: "8rem",
+    height: '8rem',
+    width: '8rem',
   },
   editContainer: {
-    borderLeft: "4px solid #fff",
-    [theme.breakpoints.down("md")]: {
-      height: "30rem",
+    borderLeft: '4px solid #fff',
+    [theme.breakpoints.down('md')]: {
+      height: '30rem',
       borderLeft: 0,
     },
   },
@@ -51,8 +51,8 @@ export default function Edit({
     if (edit && isError) {
       dispatchFeedback(
         setSnackbar({
-          status: "error",
-          message: "All fields must be valid before saving.",
+          status: 'error',
+          message: 'All fields must be valid before saving.',
         })
       )
       return
@@ -61,7 +61,7 @@ export default function Edit({
     setEdit(!edit)
     const { password, ...newDetails } = details
 
-    if (password !== "********") {
+    if (password !== '********') {
       setDialogOpen(true)
     }
 
@@ -70,7 +70,7 @@ export default function Edit({
 
       axios
         .post(
-          process.env.GATSBY_STRAPI_URL + "/users-permissions/set-settings",
+          `${process.env.GATSBY_STRAPI_URL}/users-permissions/set-settings`,
           {
             details: newDetails,
             detailSlot,
@@ -83,8 +83,8 @@ export default function Edit({
           setLoading(false)
           dispatchFeedback(
             setSnackbar({
-              status: "success",
-              message: "Settings Saved Successfully",
+              status: 'success',
+              message: 'Settings Saved Successfully',
             })
           )
           dispatchUser(
@@ -96,9 +96,9 @@ export default function Edit({
           console.error(error)
           dispatchFeedback(
             setSnackbar({
-              status: "error",
+              status: 'error',
               message:
-                "There was a problem saving your settings, please try again.",
+                'There was a problem saving your settings, please try again.',
             })
           )
         })
@@ -111,7 +111,7 @@ export default function Edit({
       container
       lg={6}
       xs={12}
-      justify="space-evenly"
+      justifyContent="space-evenly"
       alignItems="center"
       classes={{ root: classes.editContainer }}
     >
@@ -129,7 +129,7 @@ export default function Edit({
           <IconButton disabled={loading} onClick={handleEdit}>
             <img
               src={edit ? saveIcon : editIcon}
-              alt={`${edit ? "save" : "edit"} settings`}
+              alt={`${edit ? 'save' : 'edit'} settings`}
               className={classes.icon}
             />
           </IconButton>

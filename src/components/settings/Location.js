@@ -1,61 +1,61 @@
-import React, { useState, useEffect, useContext, useRef } from "react"
-import axios from "axios"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import Chip from "@material-ui/core/Chip"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import Switch from "@material-ui/core/Switch"
-import { makeStyles } from "@material-ui/core/styles"
+import React, { useState, useEffect, useContext, useRef } from 'react'
+import axios from 'axios'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Chip from '@material-ui/core/Chip'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
+import { makeStyles } from '@material-ui/core/styles'
 
-import Fields from "../auth/Fields"
-import Slots from "./Slots"
+import Fields from '../auth/Fields'
+import Slots from './Slots'
 
-import { FeedbackContext } from "../../contexts"
-import { setSnackbar } from "../../contexts/actions"
+import { FeedbackContext } from '../../contexts'
+import { setSnackbar } from '../../contexts/actions'
 
-import locationIcon from "../../images/location.svg"
-import streetAdornment from "../../images/street-adornment.svg"
-import zipAdornment from "../../images/zip-adornment.svg"
+import locationIcon from '../../images/location.svg'
+import streetAdornment from '../../images/street-adornment.svg'
+import zipAdornment from '../../images/zip-adornment.svg'
 
 const useStyles = makeStyles(theme => ({
   icon: {
-    marginBottom: ({ checkout }) => (checkout ? "1rem" : "3rem"),
-    [theme.breakpoints.down("xs")]: {
-      marginBottom: "1rem",
+    marginBottom: ({ checkout }) => (checkout ? '1rem' : '3rem'),
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '1rem',
     },
   },
   chipWrapper: {
-    marginTop: "2rem",
-    marginBottom: "3rem",
+    marginTop: '2rem',
+    marginBottom: '3rem',
   },
   fieldContainer: {
-    "& > :not(:first-child)": {
-      marginTop: "2rem",
+    '& > :not(:first-child)': {
+      marginTop: '2rem',
     },
   },
   slotContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: ({ checkout }) => (checkout ? -8 : 0),
   },
   switchWrapper: {
     marginRight: 4,
   },
   switchLabel: {
-    color: "#fff",
+    color: '#fff',
     fontWeight: 600,
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1rem",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem',
     },
   },
   locationContainer: {
-    height: "100%",
+    height: '100%',
     display: ({ checkout, selectedStep, stepNumber }) =>
-      checkout && selectedStep !== stepNumber ? "none" : "flex",
-    position: "relative",
-    [theme.breakpoints.down("md")]: {
-      borderBottom: "4px solid #fff",
-      height: ({ checkout }) => (!checkout ? "30rem" : "100%"),
+      checkout && selectedStep !== stepNumber ? 'none' : 'flex',
+    position: 'relative',
+    [theme.breakpoints.down('md')]: {
+      borderBottom: '4px solid #fff',
+      height: ({ checkout }) => (!checkout ? '30rem' : '100%'),
     },
   },
 }))
@@ -104,15 +104,15 @@ export default function Location({
         console.error(error)
         dispatchFeedback(
           setSnackbar({
-            status: "error",
-            message: "There was a problem with your zipcode, please try again.",
+            status: 'error',
+            message: 'There was a problem with your zipcode, please try again.',
           })
         )
       })
   }
 
   useEffect(() => {
-    if (noSlots || user.username === "Guest") return
+    if (noSlots || user.username === 'Guest') return
 
     setValues(user.locations[slot])
   }, [slot])
@@ -131,7 +131,7 @@ export default function Location({
 
       getLocation()
     } else if (values.zip.length < 5 && values.city) {
-      handleValues({ ...values, city: "", state: "" })
+      handleValues({ ...values, city: '', state: '' })
     }
   }, [values])
 
@@ -155,13 +155,13 @@ export default function Location({
 
   const fields = {
     street: {
-      placeholder: "Street",
-      helperText: "invalid address",
+      placeholder: 'Street',
+      helperText: 'invalid address',
       startAdornment: <img src={streetAdornment} alt="street" />,
     },
     zip: {
-      placeholder: "Zip Code",
-      helperText: "invalid zip code",
+      placeholder: 'Zip Code',
+      helperText: 'invalid zip code',
       startAdornment: <img src={zipAdornment} alt="zip code" />,
     },
   }
@@ -182,7 +182,7 @@ export default function Location({
       lg={checkout ? 12 : 6}
       xs={12}
       alignItems="center"
-      justify="center"
+      justifyContent="center"
       classes={{ root: classes.locationContainer }}
     >
       <Grid item>
@@ -215,7 +215,7 @@ export default function Location({
         ) : (
           <Chip
             label={
-              values.city ? `${values.city}, ${values.state}` : "City, State"
+              values.city ? `${values.city}, ${values.state}` : 'City, State'
             }
           />
         )}
@@ -224,7 +224,7 @@ export default function Location({
         <Grid
           item
           container
-          justify="space-between"
+          justifyContent="space-between"
           classes={{ root: classes.slotContainer }}
         >
           <Slots slot={slot} setSlot={setSlot} checkout={checkout} />

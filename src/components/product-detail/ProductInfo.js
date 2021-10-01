@@ -205,7 +205,7 @@ export default function ProductInfo({
     <Grid
       item
       container
-      justify="center"
+      justifyContent="center"
       alignItems="flex-end"
       direction="column"
       lg={6}
@@ -213,7 +213,7 @@ export default function ProductInfo({
       <Grid
         item
         container
-        justify="flex-end"
+        justifyContent="flex-end"
         classes={{ root: classes.background }}
       >
         <Grid item classes={{ root: classes.iconWrapper }}>
@@ -239,7 +239,7 @@ export default function ProductInfo({
         <Grid
           item
           container
-          justify="space-between"
+          justifyContent="space-between"
           direction={matchesXS ? "column" : "row"}
           classes={{
             root: clsx(classes.detailsContainer, classes.sectionContainer),
@@ -289,7 +289,7 @@ export default function ProductInfo({
         <Grid
           item
           container
-          justify={matchesXS ? "space-around" : "space-between"}
+          justifyContent={matchesXS ? "space-around" : "space-between"}
           direction={matchesXS ? "column" : "row"}
           alignItems={matchesXS ? "flex-start" : "center"}
           classes={{

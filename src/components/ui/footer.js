@@ -67,7 +67,7 @@ export default function Footer() {
 
   return (
     <footer className={classes.footer}>
-      <Grid container justify="space-between">
+      <Grid container justifyContent="space-between">
         {/* Links */}
         <Grid item classes={{ root: classes.linkContainer }}>
           <Grid container>

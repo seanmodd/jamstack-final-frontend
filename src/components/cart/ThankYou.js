@@ -1,50 +1,50 @@
-import React from "react"
-import Grid from "@material-ui/core/Grid"
-import Button from "@material-ui/core/Button"
-import Typography from "@material-ui/core/Typography"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import { Link } from "gatsby"
-import { makeStyles } from "@material-ui/core/styles"
+import React from 'react'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { Link } from 'gatsby'
+import { makeStyles } from '@material-ui/core/styles'
 
-import complete from "../../images/order-placed.svg"
+import complete from '../../images/order-placed.svg'
 
 const useStyles = makeStyles(theme => ({
   detailsButton: {
-    padding: "0.25rem 0",
-    textTransform: "none",
+    padding: '0.25rem 0',
+    textTransform: 'none',
   },
   detailsText: {
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1rem",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem',
     },
   },
   order: {
     fontWeight: 600,
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1rem",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem',
     },
   },
   shopText: {
-    fontSize: "2rem",
+    fontSize: '2rem',
     fontWeight: 600,
-    textTransform: "none",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1.5rem",
+    textTransform: 'none',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.5rem',
     },
   },
   container: {
-    height: "100%",
-    position: "relative",
+    height: '100%',
+    position: 'relative',
     display: ({ selectedStep, stepNumber }) =>
-      selectedStep !== stepNumber ? "none" : "flex",
+      selectedStep !== stepNumber ? 'none' : 'flex',
   },
   shopWrapper: {
-    position: "absolute",
-    bottom: "1rem",
-    right: "1rem",
+    position: 'absolute',
+    bottom: '1rem',
+    right: '1rem',
   },
   icon: {
-    marginTop: "-3rem",
+    marginTop: '-3rem',
   },
 }))
 
@@ -55,10 +55,10 @@ export default function ThankYou({
   stepNumber,
 }) {
   const classes = useStyles({ selectedStep, stepNumber })
-  const matchesXS = useMediaQuery(theme => theme.breakpoints.down("xs"))
+  const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
 
   const addToDate = days => {
-    var date = new Date()
+    const date = new Date()
 
     date.setDate(date.getDate() + days)
 
@@ -71,9 +71,9 @@ export default function ThankYou({
 
   const getExpected = () => {
     switch (selectedShipping) {
-      case "2-DAY SHIPPING":
+      case '2-DAY SHIPPING':
         return addToDate(2)
-      case "OVERNIGHT SHIPPING":
+      case 'OVERNIGHT SHIPPING':
         return addToDate(1)
       default:
         return addToDate(14)
@@ -86,7 +86,7 @@ export default function ThankYou({
       container
       direction="column"
       alignItems="center"
-      justify="center"
+      justifyContent="center"
       classes={{ root: classes.container }}
     >
       <Grid item>
@@ -99,7 +99,7 @@ export default function ThankYou({
         <Grid
           item
           container
-          justify={matchesXS ? "space-around" : "space-between"}
+          justifyContent={matchesXS ? 'space-around' : 'space-between'}
           alignItems="center"
         >
           <Grid item>

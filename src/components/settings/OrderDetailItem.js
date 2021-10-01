@@ -1,25 +1,25 @@
-import React from "react"
-import Grid from "@material-ui/core/Grid"
-import Chip from "@material-ui/core/Chip"
-import Typography from "@material-ui/core/Typography"
-import { makeStyles } from "@material-ui/core/styles"
+import React from 'react'
+import Grid from '@material-ui/core/Grid'
+import Chip from '@material-ui/core/Chip'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   product: {
-    height: "8rem",
-    width: "8rem",
+    height: '8rem',
+    width: '8rem',
   },
   chipRoot: {
     backgroundColor: theme.palette.primary.main,
   },
   itemInfo: {
-    textAlign: "right",
+    textAlign: 'right',
   },
   container: {
-    height: "10rem",
+    height: '10rem',
   },
   subscriptionChip: {
-    marginTop: "0.5rem",
+    marginTop: '0.5rem',
   },
 }))
 
@@ -30,7 +30,7 @@ export default function OrderDetailItem({ item }) {
     <Grid
       item
       container
-      justify="space-between"
+      justifyContent="space-between"
       alignItems="center"
       classes={{ root: classes.container }}
     >

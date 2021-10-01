@@ -494,7 +494,7 @@ export default function Confirmation({
           onClick={handleOrder}
           disabled={cart.length === 0 || loading || !clientSecret}
         >
-          <Grid container justify="space-around" alignItems="center">
+          <Grid container justifyContent="space-around" alignItems="center">
             <Grid item>
               <Typography variant="h5">PLACE ORDER</Typography>
             </Grid>

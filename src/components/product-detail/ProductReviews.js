@@ -66,7 +66,7 @@ export default function ProductReviews({ product, edit, setEdit }) {
             review={review}
           />
         ))}
-      <Grid item container justify="flex-end">
+      <Grid item container justifyContent="flex-end">
         <Grid item>
           <StyledPagination
             classes={{ root: classes.pagination }}

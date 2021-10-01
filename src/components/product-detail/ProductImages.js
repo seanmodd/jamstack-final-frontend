@@ -51,7 +51,7 @@ export default function ProductImages({
         />
         )
       </Grid>
-      <Grid item container justify="center">
+      <Grid item container justifyContent="center">
         {images.map((imageData, i) => {
           const image = getImage(imageData.localFile)
 

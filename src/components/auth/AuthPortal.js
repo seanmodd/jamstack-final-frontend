@@ -100,13 +100,13 @@ export default function AuthPortal() {
   }, [])
 
   return (
-    <Grid container justify="center" classes={{ root: classes.container }}>
+    <Grid container justifyContent="center" classes={{ root: classes.container }}>
       <Grid item>
         <Paper elevation={6} classes={{ root: classes.paper }}>
           <Grid
             container
             direction="column"
-            justify="space-between"
+            justifyContent="space-between"
             alignItems="center"
             classes={{ root: classes.inner }}
           >

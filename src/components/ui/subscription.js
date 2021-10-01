@@ -1,25 +1,25 @@
-import React, { useState, useContext } from "react"
-import clsx from "clsx"
-import Grid from "@material-ui/core/Grid"
-import Dialog from "@material-ui/core/Dialog"
-import Chip from "@material-ui/core/Chip"
-import Button from "@material-ui/core/Button"
-import IconButton from "@material-ui/core/IconButton"
-import Typography from "@material-ui/core/Typography"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import { makeStyles } from "@material-ui/core/styles"
+import React, { useState, useContext } from 'react'
+import clsx from 'clsx'
+import Grid from '@material-ui/core/Grid'
+import Dialog from '@material-ui/core/Dialog'
+import Chip from '@material-ui/core/Chip'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/core/styles'
 
-import QtyButton from "../product-list/QtyButton"
-import SelectFrequency from "../ui/select-frequency"
+import QtyButton from '../product-list/QtyButton'
+import SelectFrequency from './select-frequency'
 
-import { CartContext, FeedbackContext, UserContext } from "../../contexts"
+import { CartContext, FeedbackContext, UserContext } from '../../contexts'
 import {
   setSnackbar,
   addToCart,
   toggleSubscription,
-} from "../../contexts/actions"
+} from '../../contexts/actions'
 
-import SubscriptionIcon from "../../images/Subscription"
+import SubscriptionIcon from '../../images/Subscription'
 
 const useStyles = makeStyles(theme => ({
   iconWrapper: {
@@ -27,10 +27,10 @@ const useStyles = makeStyles(theme => ({
     width: ({ size }) => `${size || 2}rem`,
   },
   row: {
-    height: "4rem",
-    padding: "0 0.5rem",
-    [theme.breakpoints.down("xs")]: {
-      height: "auto",
+    height: '4rem',
+    padding: '0 0.5rem',
+    [theme.breakpoints.down('xs')]: {
+      height: 'auto',
     },
   },
   light: {
@@ -43,21 +43,21 @@ const useStyles = makeStyles(theme => ({
     padding: ({ noPadding }) => (noPadding ? 0 : undefined),
   },
   cartButton: {
-    height: "8rem",
+    height: '8rem',
     borderRadius: 0,
-    width: "100%",
-    [theme.breakpoints.down("xs")]: {
-      height: "auto",
+    width: '100%',
+    [theme.breakpoints.down('xs')]: {
+      height: 'auto',
     },
   },
   cartText: {
-    color: "#fff",
-    fontSize: "4rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "3.25rem",
+    color: '#fff',
+    fontSize: '4rem',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '3.25rem',
     },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "2rem",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2rem',
     },
   },
   dialog: {
@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
   },
   buttonWrapper: {
-    width: "100%",
+    width: '100%',
   },
 }))
 
@@ -83,11 +83,11 @@ export default function Subscription({
   const classes = useStyles({ size, noPadding })
   const [open, setOpen] = useState(false)
   const [qty, setQty] = useState(1)
-  const [frequency, setFrequency] = useState("Month")
+  const [frequency, setFrequency] = useState('Month')
   const { dispatchFeedback } = useContext(FeedbackContext)
   const { dispatchCart } = useContext(CartContext)
   const { user } = useContext(UserContext)
-  const matchesXS = useMediaQuery(theme => theme.breakpoints.down("xs"))
+  const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
 
   const handleCart = () => {
     dispatchCart(
@@ -95,7 +95,7 @@ export default function Subscription({
     )
     setOpen(false)
     dispatchFeedback(
-      setSnackbar({ status: "success", message: "Subscription Added To Cart." })
+      setSnackbar({ status: 'success', message: 'Subscription Added To Cart.' })
     )
   }
 
@@ -105,14 +105,13 @@ export default function Subscription({
       return
     }
 
-    if (user.username === "Guest") {
+    if (user.username === 'Guest') {
       dispatchFeedback(
         setSnackbar({
-          status: "error",
-          message: "You must be logged in to create a subscription.",
+          status: 'error',
+          message: 'You must be logged in to create a subscription.',
         })
       )
-      return
     } else {
       setOpen(true)
     }
@@ -137,7 +136,7 @@ export default function Subscription({
           <Grid
             item
             container
-            justify="space-between"
+            justifyContent="space-between"
             alignItems="center"
             classes={{ root: clsx(classes.row, classes.dark) }}
           >
@@ -158,9 +157,9 @@ export default function Subscription({
           <Grid
             item
             container
-            alignItems={matchesXS ? "flex-start" : "center"}
-            justify="space-between"
-            direction={matchesXS ? "column" : "row"}
+            alignItems={matchesXS ? 'flex-start' : 'center'}
+            justifyContent="space-between"
+            direction={matchesXS ? 'column' : 'row'}
             classes={{ root: clsx(classes.row, classes.light) }}
           >
             <Grid item>

@@ -233,7 +233,7 @@ export default function Login({
           </Button>
         </Grid>
       )}
-      <Grid item container justify="space-between">
+      <Grid item container justifyContent="space-between">
         <Grid item>
           <IconButton onClick={navigateSignUp}>
             <img src={addUserIcon} alt="sign up" />
