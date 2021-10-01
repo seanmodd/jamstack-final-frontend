@@ -62,7 +62,7 @@ export default function OrderDetails({ orders, open, setOpen }) {
   const classes = useStyles()
   const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
 
-  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  const iOS = window && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const order = orders.find(order => order.id === open)
 
