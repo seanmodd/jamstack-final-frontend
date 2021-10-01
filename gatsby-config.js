@@ -1,4 +1,4 @@
-require("dotenv").config()
+require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
@@ -6,20 +6,20 @@ module.exports = {
     description: `The premier developer clothing line. By developers, for developers. High quality, custom-designed shirts, hats, and hoodies.`,
     author: `Zachary Reece`,
     keywords: [
-      "clothing",
-      "developer",
-      "programmer",
-      "coding",
-      "code",
-      "websites",
-      "web developer",
-      "hats",
-      "shirts",
-      "hoodies",
+      'clothing',
+      'developer',
+      'programmer',
+      'coding',
+      'code',
+      'websites',
+      'web developer',
+      'hats',
+      'shirts',
+      'hoodies',
     ],
-    siteUrl: "https://formstorm.design",
-    twitterUsername: "@zacharydreece",
-    defaultImage: "",
+    siteUrl: 'https://formstorm.design',
+    twitterUsername: '@zacharydreece',
+    defaultImage: '',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -29,9 +29,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: "https://formstorm.design",
-        sitemap: "https://formstorm.design/sitemap.xml",
-        policy: [{ userAgent: "*", allow: "/" }],
+        host: 'https://formstorm.design',
+        sitemap: 'https://formstorm.design/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
     {
@@ -43,13 +43,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: [
-            "Philosopher:700:latin",
-            "Montserrat:700,600,500,400,300:latin",
-          ],
+          families: ['Poppins:700:latin', 'Poppins:700,600,500,400,300:latin'],
         },
       },
     },
@@ -74,7 +71,7 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`],
-          placeholder: "blurred",
+          placeholder: 'blurred',
           breakpoints: [300, 600, 960, 1280, 1920],
         },
       },
@@ -85,8 +82,8 @@ module.exports = {
         name: `VAR-X`,
         short_name: `VAR-X`,
         start_url: `/`,
-        background_color: `#99B898`,
-        theme_color: `#99B898`,
+        background_color: `#6600ff`,
+        theme_color: `#6600ff`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },
