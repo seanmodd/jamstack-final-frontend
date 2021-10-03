@@ -1,7 +1,7 @@
 import { createTheme } from '@material-ui/core/styles'
 
-// const green = '#6600ff'
-// const darkGreen = '#6600ff'
+// const green = '#7920ff'
+// const darkGreen = '#7920ff'
 const tan = '#FECEA8'
 const lightRed = '#FF847C'
 const red = '#E84A5F'
@@ -11,7 +11,7 @@ const grey = '#747474'
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#6600ff',
+      main: '#7920ff',
     },
     secondary: {
       main: '#000033',
@@ -26,10 +26,10 @@ const theme = createTheme({
   typography: {
     h1: {
       fontSize: '4.5rem',
-      fontFamily: 'Poppins',
-      fontStyle: 'italic',
-      fontWeight: 700,
-      color: '#6600ff',
+      fontFamily: 'Barlow',
+      fontStyle: 'normal',
+      fontWeight: 500,
+      color: '#7920ff',
     },
     h2: {
       fontFamily: 'Poppins',
@@ -41,29 +41,31 @@ const theme = createTheme({
       fontFamily: 'Poppins',
       fontSize: '2rem',
       fontWeight: 300,
-      color: '#6600ff',
+      color: '#7920ff',
     },
     h4: {
-      fontFamily: 'Poppins',
-      fontStyle: 'italic',
-      fontWeight: 700,
+      fontFamily: 'Barlow',
+      fontStyle: 'normal',
+      fontWeight: 500,
       fontSize: '3rem',
       color: '#fff',
     },
     h5: {
-      fontFamily: 'Poppins',
+      fontFamily: 'Barlow',
       fontSize: '2rem',
-      fontWeight: 700,
-      fontStyle: 'italic',
+      fontWeight: 500,
+      fontStyle: 'normal',
       color: '#fff',
     },
     body1: {
-      fontFamily: 'Poppins',
+      fontFamily: 'Barlow',
+      fontWeight: 400,
       fontSize: '1.5rem',
       color: grey,
     },
     body2: {
-      fontFamily: 'Poppins',
+      fontFamily: 'Barlow',
+      fontWeight: 400,
       fontSize: '1.5rem',
       color: '#fff',
     },

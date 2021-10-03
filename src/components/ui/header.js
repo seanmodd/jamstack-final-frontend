@@ -35,6 +35,10 @@ const useStyles = makeStyles(theme => ({
   },
   logoText: {
     color: theme.palette.common.offBlack,
+    fontWeight: 'normal',
+    textDecoration: 'none',
+    fontStyle: 'normal',
+    // fontSize: '0.5rem',
   },
   logoContainer: {
     [theme.breakpoints.down('md')]: {
@@ -162,12 +166,12 @@ export default function Header({ categories }) {
   )
 
   const actions = [
-    {
-      icon: search,
-      alt: 'search',
-      visible: true,
-      onClick: () => console.log('search'),
-    },
+    // {
+    //   icon: search,
+    //   alt: 'search',
+    //   visible: true,
+    //   onClick: () => console.log('search'),
+    // },
     { icon: cartIcon, alt: 'cart', visible: true, link: '/cart' },
     { icon: account, alt: 'account', visible: !matchesMD, link: '/account' },
     {
@@ -187,7 +191,7 @@ export default function Header({ categories }) {
           classes={{ root: classes.logoContainer }}
         >
           <Typography variant="h1" classes={{ root: classes.logo }}>
-            <span className={classes.logoText}>VAR</span> X
+            <span className={classes.logoText}>CAR</span> X
           </Typography>
         </Button>
         {matchesMD ? drawer : tabs}

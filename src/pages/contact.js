@@ -218,13 +218,13 @@ const ContactPage = () => {
     {
       label: (
         <span>
-          1234 S Example St {matchesXS ? <br /> : null}Wichita, KS 67111
+          3566 Stevens Creek Blvd{matchesXS ? <br /> : null}San Jose, CA 95117
         </span>
       ),
       icon: <img className={classes.contactIcon} src={address} alt="address" />,
     },
     {
-      label: '(555) 555-5555',
+      label: '(650) 353-6570',
       icon: (
         <div className={classes.contactIcon}>
           <PhoneAdornment />
@@ -232,7 +232,7 @@ const ContactPage = () => {
       ),
     },
     {
-      label: 'zachary@var-x.com',
+      label: 'sean@senpex.com',
       icon: (
         <div className={classes.contactEmailIcon}>
           <Email color="#fff" />

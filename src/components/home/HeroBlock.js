@@ -44,14 +44,17 @@ export default function HeroBlock() {
               variant="h1"
               classes={{ root: classes.heading }}
             >
-              The Premier
+              The Online Auto Dealer
               <br />
-              Developer Clothing Line
+              That Works For You.
             </Typography>
           </Grid>
           <Grid item>
+            {/* <Typography align="center" variant="h3">
+              Buying a new car is a big decision, and it's never been this easy.
+            </Typography> */}
             <Typography align="center" variant="h3">
-              high quality, custom-designed shirts, hats, and hoodies
+              Free 10-day test drive, no credit card required. No obligation.
             </Typography>
           </Grid>
         </Grid>

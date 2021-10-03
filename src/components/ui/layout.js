@@ -24,18 +24,6 @@ const useStyles = makeStyles(theme => ({
 const Layout = ({ children }) => {
   const classes = useStyles()
 
-  // const data = useStaticQuery(graphql`
-  //   query GetCategories {
-  //     allStrapiCategory {
-  //       edges {
-  //         node {
-  //           name
-  //           strapiId
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
 
   const data = useStaticQuery(graphql`
     query GetCategories {

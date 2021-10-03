@@ -46,7 +46,11 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Poppins:700:latin', 'Poppins:700,600,500,400,300:latin'],
+          families: [
+            'Poppins:700:latin',
+            'Poppins:700,600,500,400,300:latin',
+            'Barlow:700,600,500,400,300,200:latin',
+          ],
         },
       },
     },
