@@ -92,7 +92,7 @@ export default function SignUp({
     setLoading(true)
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "/auth/local/register", {
+      .post(process.env.GATSBY_STRAPI_URL + "auth/local/register", {
         username: values.name,
         email: values.email,
         password: values.password,
@@ -148,7 +148,7 @@ export default function SignUp({
           component={!info ? "a" : undefined}
           href={
             !info
-              ? `${process.env.GATSBY_STRAPI_URL}/connect/facebook`
+              ? `${process.env.GATSBY_STRAPI_URL}connect/facebook`
               : undefined
           }
           disabled={loading || (info && disabled)}

@@ -54,7 +54,7 @@ export default function Reset({ steps, setSelectedStep, dispatchFeedback }) {
     const code = params.get("code")
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "/auth/reset-password", {
+      .post(process.env.GATSBY_STRAPI_URL + "auth/reset-password", {
         code,
         password: values.password,
         passwordConfirmation: values.confirmation,

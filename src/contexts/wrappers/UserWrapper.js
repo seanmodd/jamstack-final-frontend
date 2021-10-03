@@ -21,7 +21,7 @@ export function UserWrapper({ children }) {
     if (storedUser) {
       setTimeout(() => {
         axios
-          .get(process.env.GATSBY_STRAPI_URL + "/users/me", {
+          .get(process.env.GATSBY_STRAPI_URL + "users/me", {
             headers: {
               Authorization: `Bearer ${storedUser.jwt}`,
             },

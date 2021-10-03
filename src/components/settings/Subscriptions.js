@@ -55,7 +55,7 @@ export default function Subscriptions({ setSelectedSetting }) {
 
   useEffect(() => {
     axios
-      .get(process.env.GATSBY_STRAPI_URL + "/subscriptions/me", {
+      .get(process.env.GATSBY_STRAPI_URL + "subscriptions/me", {
         headers: { Authorization: `Bearer ${user.jwt}` },
       })
       .then(response => setSubscriptions(response.data))

@@ -31,7 +31,7 @@ export default function OrderHistory({ setSelectedSetting }) {
 
   useEffect(() => {
     axios
-      .get(process.env.GATSBY_STRAPI_URL + "/orders/history", {
+      .get(process.env.GATSBY_STRAPI_URL + "orders/history", {
         headers: { Authorization: `Bearer ${user.jwt}` },
       })
       .then(response => {
