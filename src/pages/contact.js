@@ -218,7 +218,8 @@ const ContactPage = () => {
     {
       label: (
         <span>
-          3566 Stevens Creek Blvd{matchesXS ? <br /> : null}San Jose, CA 95117
+          3566 Stevens Creek Blvd,
+        <br /> {matchesXS ? <br /> : null}San Jose, CA 95117
         </span>
       ),
       icon: <img className={classes.contactIcon} src={address} alt="address" />,
