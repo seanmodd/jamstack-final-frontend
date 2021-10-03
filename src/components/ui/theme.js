@@ -32,13 +32,13 @@ const theme = createTheme({
       color: '#7920ff',
     },
     h2: {
-      fontFamily: 'Poppins',
+      fontFamily: 'Barlow',
       fontSize: '3rem',
       fontWeight: 500,
       color: '#fff',
     },
     h3: {
-      fontFamily: 'Poppins',
+      fontFamily: 'Barlow',
       fontSize: '2rem',
       fontWeight: 300,
       color: '#7920ff',
@@ -76,7 +76,7 @@ const theme = createTheme({
         backgroundColor: '#000033',
       },
       label: {
-        fontFamily: 'Poppins',
+        fontFamily: 'Barlow',
         fontSize: '1.5rem',
         color: '#fff',
         fontWeight: 400,
