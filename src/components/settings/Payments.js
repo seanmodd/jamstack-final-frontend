@@ -151,7 +151,7 @@ export default function Payments({
 
     axios
       .post(
-        `${process.env.GATSBY_STRAPI_URL}orders/removeCard`,
+        `${process.env.GATSBY_STRAPI_URL}/orders/removeCard`,
         {
           card: card.last4,
         },

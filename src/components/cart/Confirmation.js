@@ -289,7 +289,7 @@ export default function Confirmation({
     } else if (result.paymentIntent.status === 'succeeded') {
       axios
         .post(
-          `${process.env.GATSBY_STRAPI_URL}orders/finalize`,
+          `${process.env.GATSBY_STRAPI_URL}/orders/finalize`,
           {
             shippingAddress: locationValues,
             billingAddress: billingLocation,
@@ -357,7 +357,7 @@ export default function Confirmation({
 
       axios
         .post(
-          `${process.env.GATSBY_STRAPI_URL}orders/process`,
+          `${process.env.GATSBY_STRAPI_URL}/orders/process`,
           {
             items: cart,
             total: total.toFixed(2),

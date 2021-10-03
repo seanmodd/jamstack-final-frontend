@@ -124,7 +124,7 @@ export default function Login({
     setLoading(true)
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "auth/local", {
+      .post(process.env.GATSBY_STRAPI_URL + "/auth/local", {
         identifier: values.email,
         password: values.password,
       })
@@ -150,7 +150,7 @@ export default function Login({
     setLoading(true)
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "auth/forgot-password", {
+      .post(process.env.GATSBY_STRAPI_URL + "/auth/forgot-password", {
         email: values.email,
       })
       .then(response => {
@@ -220,7 +220,7 @@ export default function Login({
         <Grid item>
           <Button
             component="a"
-            href={`${process.env.GATSBY_STRAPI_URL}connect/facebook`}
+            href={`${process.env.GATSBY_STRAPI_URL}/connect/facebook`}
             classes={{
               root: clsx(classes.facebookButton, {
                 [classes.passwordError]: errors.password,

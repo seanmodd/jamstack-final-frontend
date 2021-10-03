@@ -53,7 +53,7 @@ export default function Confirmation({
     setLoading(true)
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "auth/local", {
+      .post(process.env.GATSBY_STRAPI_URL + "/auth/local", {
         identifier: user.email,
         password: values.password,
       })

@@ -261,7 +261,7 @@ export default function Favorites({ setSelectedSetting }) {
 
   useEffect(() => {
     axios
-      .get(process.env.GATSBY_STRAPI_URL + "favorites/userFavorites", {
+      .get(process.env.GATSBY_STRAPI_URL + "/favorites/userFavorites", {
         headers: { Authorization: `Bearer ${user.jwt}` },
       })
       .then(response => {

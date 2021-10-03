@@ -70,7 +70,7 @@ export default function Edit({
 
       axios
         .post(
-          `${process.env.GATSBY_STRAPI_URL}users-permissions/set-settings`,
+          `${process.env.GATSBY_STRAPI_URL}/users-permissions/set-settings`,
           {
             details: newDetails,
             detailSlot,

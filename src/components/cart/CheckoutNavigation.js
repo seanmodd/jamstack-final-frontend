@@ -110,7 +110,7 @@ export default function CheckoutNavigation({
 
     axios
       .post(
-        `${process.env.GATSBY_STRAPI_URL}users-permissions/set-settings`,
+        `${process.env.GATSBY_STRAPI_URL}/users-permissions/set-settings`,
         {
           details: isDetails && action !== 'delete' ? details : undefined,
           detailSlot: isDetails ? detailSlot : undefined,

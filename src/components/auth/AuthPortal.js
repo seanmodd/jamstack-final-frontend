@@ -73,7 +73,7 @@ export default function AuthPortal() {
       setSelectedStep(steps.indexOf(resetStep))
     } else if (access_token) {
       axios
-        .get(process.env.GATSBY_STRAPI_URL + "auth/facebook/callback", {
+        .get(process.env.GATSBY_STRAPI_URL + "/auth/facebook/callback", {
           params: { access_token },
         })
         .then(response => {
