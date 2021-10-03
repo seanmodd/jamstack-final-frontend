@@ -6,6 +6,7 @@
   "author": "Zachary Reece <jamstack.course@gmail.com>",
   "dependencies": {
     "@apollo/client": "^3.2.9",
+    "@emotion/react": "^11.4.1",
     "@loadable/component": "^5.15.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/data-grid": "^4.0.0-alpha.21",
@@ -15,7 +16,7 @@
     "@stripe/stripe-js": "^1.18.0",
     "axios": "^0.21.0",
     "cross-fetch": "^3.0.6",
-    "gatsby": "^3.14.0", 
+    "gatsby": "^3.14.0",
     "gatsby-plugin-image": "^1.6.0",
     "gatsby-plugin-loadable-components-ssr": "^3.4.0",
     "gatsby-plugin-manifest": "^3.14.0",
