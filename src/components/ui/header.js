@@ -95,7 +95,9 @@ export default function Header({ categories }) {
   //   window &&
   //   window.window === window &&
   //   /iPad|iPhone|iPod/.test(navigator.userAgent)
-  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  const iOS =
+    typeof window !== 'undefined' &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const activeIndex = () => {
     const pathname =
