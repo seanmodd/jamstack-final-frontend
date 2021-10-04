@@ -88,12 +88,14 @@ export default function Header({ categories }) {
 
   const [drawerOpen, setDrawerOpen] = useState(false)
 
+  //! Show Jayen this is what's causing the problem likely... because process.browser gave me an error I changed it to typeof window !=== 'undefined'
   // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
-  const iOS =
-    typeof window !== 'undefined' &&
-    window &&
-    window.window === window &&
-    /iPad|iPhone|iPod/.test(navigator.userAgent)
+  // const iOS =
+  //   typeof window !== 'undefined' &&
+  //   window &&
+  //   window.window === window &&
+  //   /iPad|iPhone|iPod/.test(navigator.userAgent)
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const activeIndex = () => {
     const pathname =
