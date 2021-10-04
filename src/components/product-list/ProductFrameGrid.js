@@ -104,15 +104,23 @@ export default function ProductFrameGrid({
 
   const imageIndex = colorIndex(product, variant, selectedColor)
 
+  // const imgURL =
+  //   imageIndex !== -1
+  //     ? product.node.variants[imageIndex].images[0].localFile
+  //     : variant?.images[0].localFile
+  //! Show Jayen, made the changes below to try and fix the blanks within the recently viewed part of the product
   const imgURL =
     imageIndex !== -1
       ? product.node.variants[imageIndex].images[0].localFile
       : variant?.images[0].localFile
-
+  if (imgURL == null) {
+    console.log('imgURL: Image is null')
+  }
   const image = getImage(imgURL)
 
   const productName = product.node.name.split(' ')[0]
 
+  //! SHOW JAYEN BELOW IS WHERE WE CAN FIX THE BLANK WITHIN RECENTLY VIEWED ITEMS!
   return (
     <Grid
       item
@@ -130,7 +138,9 @@ export default function ProductFrameGrid({
             ? navigate(
                 `/${product.node.category.name.toLowerCase()}/${product.node.name
                   .split(' ')[0]
-                  .toLowerCase()}${hasStyles ? `?style=${variant.style}` : ''}`
+                  .toLowerCase()}${
+                  hasStyles ? `?style=${variant.style}` : null
+                }`
               )
             : setOpen(true)
         }
