@@ -1,3 +1,5 @@
+//! Commented out all validate related functions 
+
 import React, { useState, useContext } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
@@ -20,7 +22,7 @@ import nameAdornment from '../images/name-adornment.svg'
 import PhoneAdornment from '../images/PhoneAdornment'
 
 import Layout from '../components/ui/layout'
-import validate from '../components/ui/validate'
+// import validate from '../components/ui/validate'
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {
@@ -320,36 +322,37 @@ const ContactPage = () => {
             </Grid>
             <Grid item>
               <Grid container direction="column">
-                {Object.keys(fields).map(field => {
-                  const validateHelper = event =>
-                    validate({ [field]: event.target.value })
+                {/* {Object.keys(fields).map(field => { */}
+                  {/* const validateHelper = event => */}
+                    {/* validate({ [field]: event.target.value }) */}
 
-                  return (
-                    <Grid
-                      item
-                      key={field}
-                      classes={{
-                        root:
-                          field === 'message'
-                            ? classes.multilineContainer
-                            : classes.fieldContainer,
-                      }}
-                    >
+                  {/* return ( */}
+                    {/* <Grid */}
+                      {/* item */}
+                      {/* key={field} */}
+                      {/* classes={{ */}
+                        {/* root: */}
+                          {/* field === 'message' */}
+                            {/* ? classes.multilineContainer */}
+                            {/* : classes.fieldContainer, */}
+                      {/* }} */}
+                    {/* > */}
                       <TextField
                         name={field}
                         value={values[field]}
                         onChange={e => {
-                          const valid = validateHelper(e)
+                          // const valid = validateHelper(e)
 
-                          if (errors[field] || valid[field] === true) {
-                            setErrors({ ...errors, [field]: !valid[field] })
-                          }
+                          // if (errors[field] || valid[field] === true) {
+                            // setErrors({ ...errors, [field]: !valid[field] })
+                          // }
 
                           setValues({ ...values, [field]: e.target.value })
                         }}
                         onBlur={e => {
-                          const valid = validateHelper(e)
-                          setErrors({ ...errors, [field]: !valid[field] })
+                          // const valid = validateHelper(e)
+                          // setErrors({ ...errors, [field]: !valid[field] })
+                          setErrors({ ...errors, [field] })
                         }}
                         error={errors[field]}
                         helperText={errors[field] && fields[field].helperText}
