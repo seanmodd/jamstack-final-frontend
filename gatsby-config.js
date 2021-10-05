@@ -1,3 +1,4 @@
+//* Potential Problem: Commented out gatsby-plugin-offline
 require('dotenv').config()
 
 module.exports = {
@@ -92,6 +93,6 @@ module.exports = {
         icon: `src/images/favicon.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
   ],
 }

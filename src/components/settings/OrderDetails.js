@@ -1,3 +1,5 @@
+//* Potential Problem: Utilizing typeof window !== 'undefined' below...
+
 import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import Grid from '@material-ui/core/Grid'
@@ -61,8 +63,10 @@ const useStyles = makeStyles(theme => ({
 export default function OrderDetails({ orders, open, setOpen }) {
   const classes = useStyles()
   const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
-
-  const iOS = window && /iPad|iPhone|iPod/.test(navigator.userAgent)
+  //! Show Jayen, this is also causing problems...
+  const iOS =
+    typeof window !== 'undefined' &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const order = orders.find(order => order.id === open)
 

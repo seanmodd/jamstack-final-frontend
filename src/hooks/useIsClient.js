@@ -1,4 +1,5 @@
 //! This is specifically to solve Rehydration errors!
+
 import { useState, useEffect } from 'react'
 
 export const useIsClient = () => {

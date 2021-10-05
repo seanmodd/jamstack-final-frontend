@@ -1,3 +1,4 @@
+//* Potential Problem: Commented out onCreateWebpackConfig that included /react-spring-3d-carousel/ for /bad-module/
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -106,16 +107,32 @@ exports.createPages = async ({ graphql, actions }) => {
 //   ...babelrc,
 //   plugins: babelrc.plugins.concat(['transform-regenerator']),
 // })
-
+//! Commenting out below...
+// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+//   if (stage === 'build-html') {
+//     actions.setWebpackConfig({
+//       module: {
+//         rules: [{ test: /react-spring-3d-carousel/, use: loaders.null() }],
+//       },
+//     })
+//   }
+// }
+//! Replacing with below...
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html') {
     actions.setWebpackConfig({
       module: {
-        rules: [{ test: /react-spring-3d-carousel/, use: loaders.null() }],
+        rules: [
+          {
+            test: /bad-module/,
+            use: loaders.null(),
+          },
+        ],
       },
     })
   }
 }
+
 // exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 //   if (stage === 'build-html') {
 //     actions.setWebpackConfig({
@@ -129,21 +146,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 //           process: 'process/browser',
 //         }),
 //       ],
-//     })
-//   }
-// }
-
-// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-//   if (stage === 'build-html') {
-//     actions.setWebpackConfig({
-//       module: {
-//         rules: [
-//           {
-//             test: /bad-module/,
-//             use: loaders.null(),
-//           },
-//         ],
-//       },
 //     })
 //   }
 // }

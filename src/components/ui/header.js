@@ -1,3 +1,5 @@
+//* Potential Problem: Utilizing typeof window !== 'undefined' below...
+
 import React, { useState, useContext } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -88,7 +90,7 @@ export default function Header({ categories }) {
 
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  //! Show Jayen this is what's causing the problem likely... because process.browser gave me an error I changed it to typeof window !=== 'undefined'
+  //* Potentially show Jayen this is what's causing the problem likely... because process.browser gave me an error I changed it to typeof window !=== 'undefined'
   // const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
   // const iOS =
   //   typeof window !== 'undefined' &&

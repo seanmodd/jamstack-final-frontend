@@ -1,34 +1,36 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import Grid from "@material-ui/core/Grid"
-import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import { makeStyles } from "@material-ui/core/styles"
+//* Potential Problem: Utilizing window below...
 
-import Fields from "./Fields"
-import { EmailPassword } from "./Login"
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { makeStyles } from '@material-ui/core/styles'
 
-import { setSnackbar } from "../../contexts/actions"
+import Fields from './Fields'
+import { EmailPassword } from './Login'
 
-import accountIcon from "../../images/account.svg"
+import { setSnackbar } from '../../contexts/actions'
+
+import accountIcon from '../../images/account.svg'
 
 const useStyles = makeStyles(theme => ({
   reset: {
-    width: "20rem",
+    width: '20rem',
     borderRadius: 50,
-    textTransform: "none",
-    marginBottom: "4rem",
-    [theme.breakpoints.down("xs")]: {
-      width: "15rem",
+    textTransform: 'none',
+    marginBottom: '4rem',
+    [theme.breakpoints.down('xs')]: {
+      width: '15rem',
     },
   },
   icon: {
-    marginTop: "2rem",
+    marginTop: '2rem',
   },
   buttonText: {
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "1.5rem",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.5rem',
     },
   },
 }))
@@ -36,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 export default function Reset({ steps, setSelectedStep, dispatchFeedback }) {
   const classes = useStyles()
   const [visible, setVisible] = useState(false)
-  const [values, setValues] = useState({ password: "", confirmation: "" })
+  const [values, setValues] = useState({ password: '', confirmation: '' })
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -44,17 +46,17 @@ export default function Reset({ steps, setSelectedStep, dispatchFeedback }) {
   const { password } = EmailPassword(true, false, visible, setVisible)
   const fields = {
     password,
-    confirmation: { ...password, placeholder: "Confirm Password" },
+    confirmation: { ...password, placeholder: 'Confirm Password' },
   }
 
   const handleReset = () => {
     setLoading(true)
 
     const params = new URLSearchParams(window.location.search)
-    const code = params.get("code")
+    const code = params.get('code')
 
     axios
-      .post(process.env.GATSBY_STRAPI_URL + "/auth/reset-password", {
+      .post(`${process.env.GATSBY_STRAPI_URL}/auth/reset-password`, {
         code,
         password: values.password,
         passwordConfirmation: values.confirmation,
@@ -65,8 +67,8 @@ export default function Reset({ steps, setSelectedStep, dispatchFeedback }) {
 
         dispatchFeedback(
           setSnackbar({
-            status: "success",
-            message: "Password Reset Successfully",
+            status: 'success',
+            message: 'Password Reset Successfully',
           })
         )
       })
@@ -76,7 +78,7 @@ export default function Reset({ steps, setSelectedStep, dispatchFeedback }) {
         const { message } = error.response.data.message[0].messages[0]
         console.error(error)
 
-        dispatchFeedback(setSnackbar({ status: "error", message }))
+        dispatchFeedback(setSnackbar({ status: 'error', message }))
       })
   }
 
@@ -91,7 +93,7 @@ export default function Reset({ steps, setSelectedStep, dispatchFeedback }) {
     const timer = setTimeout(() => {
       window.history.replaceState(null, null, window.location.pathname)
 
-      const login = steps.find(step => step.label === "Login")
+      const login = steps.find(step => step.label === 'Login')
       setSelectedStep(steps.indexOf(login))
     }, 6000)
 

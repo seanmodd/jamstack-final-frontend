@@ -1,16 +1,18 @@
-import React, { useEffect, useReducer, createContext } from "react"
-import axios from "axios"
-import userReducer from "../reducers/user-reducer"
-import { setUser } from "../actions"
+//* Potential Problem: Utilizing typeof window !== 'undefined' below...
+
+import React, { useEffect, useReducer, createContext } from 'react'
+import axios from 'axios'
+import userReducer from '../reducers/user-reducer'
+import { setUser } from '../actions'
 
 export const UserContext = createContext()
 const UserProvider = UserContext.Provider
 
 export function UserWrapper({ children }) {
-  const defaultUser = { username: "Guest" }
+  const defaultUser = { username: 'Guest' }
   const storedUser =
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("user"))
+    typeof window !== 'undefined'
+      ? JSON.parse(localStorage.getItem('user'))
       : null
   const [user, dispatchUser] = useReducer(
     userReducer,
@@ -21,7 +23,7 @@ export function UserWrapper({ children }) {
     if (storedUser) {
       setTimeout(() => {
         axios
-          .get(process.env.GATSBY_STRAPI_URL + "/users/me", {
+          .get(`${process.env.GATSBY_STRAPI_URL}/users/me`, {
             headers: {
               Authorization: `Bearer ${storedUser.jwt}`,
             },

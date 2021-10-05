@@ -1,3 +1,4 @@
+//* Potential Problem: Utilizing typeof window !== 'undefined' below... 
 import React, { useState, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import Grid from '@material-ui/core/Grid'

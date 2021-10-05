@@ -4,6 +4,7 @@
   "description": "The frontend of a JAMstack e-commerce platform built for a Udemy course.",
   "version": "1.0.0",
   "author": "Zachary Reece <jamstack.course@gmail.com>",
+  "browserslist": [">0.25%", "not dead"],
   "dependencies": {
     "@apollo/client": "^3.2.9",
     "@emotion/react": "^11.4.1",
@@ -82,4 +83,7 @@
   "bugs": {
     "url": "https://github.com/zreecespieces/jamstack-course/issues"
   }
+
+    
+
 }

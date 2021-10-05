@@ -1,10 +1,16 @@
+//! Problem: This is where the react spring animations are, they're potentially outdated
+//! Uninstalled "react-spring": "^9.2.4", "react-spring-3d-carousel": "^1.2.1", from package.json
+//! Uninstalled and deleted gatsby plugin called 'react-spring-3d-carousel' from gatsby-node.js
+//! Commented out all things 'config' related and all things 'Carousel' related
+//* Potential Problem: Utilizing typeof window !== 'undefined' below...
+
 import React, { useState } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 // import Carousel from "react-spring-3d-carousel"
-import { config } from 'react-spring'
+// import { config } from 'react-spring'
 import loadable from '@loadable/component'
 import clsx from 'clsx'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -15,7 +21,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import promoAdornment from '../../images/promo-adornment.svg'
 import explore from '../../images/explore.svg'
 
-const Carousel = loadable(() => import('react-spring-3d-carousel'))
+// const Carousel = loadable(() => import('react-spring-3d-carousel'))
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {
@@ -166,13 +172,13 @@ export default function PromotionalProducts() {
       direction={matchesMD ? 'column' : 'row'}
     >
       <Grid item classes={{ root: classes.carouselContainer }}>
-        {typeof window !== 'undefined' ? (
+        {/* {typeof window !== 'undefined' ? (
           <Carousel
             animationConfig={config.slow}
             slides={slides}
             goToSlide={selectedSlide}
           />
-        ) : null}
+        ) : null} */}
       </Grid>
       <Grid item classes={{ root: classes.descriptionContainer }}>
         <Typography variant="h2" paragraph>
