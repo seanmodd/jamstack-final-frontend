@@ -1,3 +1,5 @@
+//! Changed validate's regex to the same as promo's regex for now only...
+
 export default function validate(values) {
   // input: values = {field: value, field2: value} eg { email: zachary@var-x.com, phone: 555-555-5555 }
   // output: { field: valid } eg { email: true, phone: true }

@@ -1,4 +1,5 @@
-//old: Commented out all validate related functions 
+// old: Commented out all validate related functions
+//! Commented out all 'errorHelper' related functions!
 
 import React, { useState, useEffect, useContext } from 'react'
 import Grid from '@material-ui/core/Grid'
@@ -16,7 +17,7 @@ import Payments from '../settings/Payments'
 import Shipping from './Shipping'
 import Confirmation from './Confirmation'
 import ThankYou from './ThankYou'
-import validate from '../ui/validate'
+// import validate from '../ui/validate'
 
 import { CartContext } from '../../contexts'
 
@@ -100,28 +101,28 @@ export default function CheckoutPortal({ user }) {
     { label: 'OVERNIGHT SHIPPING', price: 29.99 },
   ]
 
-  const errorHelper = (values, forBilling, billingValues, slot) => {
-    const valid = validate(values)
+  // const errorHelper = (values, forBilling, billingValues, slot) => {
+  //   const valid = validate(values)
 
-    // If we have one slot marked as billing...
-    if (forBilling !== false && forBilling !== undefined) {
-      ...validate billing values
-      const billingValid = validate(billingValues)
+  //   // If we have one slot marked as billing...
+  //   if (forBilling !== false && forBilling !== undefined) {
+  //     ...validate billing values
+  //     const billingValid = validate(billingValues)
 
-      // If we are currently on the same slot as marked for billing, ie billing and shipping are the same...
-      if (forBilling === slot) {
-        // ...then we just need to validate the one set of values because they are the same
-        return Object.keys(billingValid).some(value => !billingValid[value])
-      }
-      // Otherwise, if we are currently on a different slot than the slot marked for billing, ie billing and shipping are different, then we need to validate both the billing values, and the shipping values
-      return (
-        Object.keys(billingValid).some(value => !billingValid[value]) ||
-        Object.keys(valid).some(value => !valid[value])
-      )
-    }
-    // if no slots were marked for billing, just validate current slot
-    return Object.keys(valid).some(value => !valid[value])
-  }
+  //     // If we are currently on the same slot as marked for billing, ie billing and shipping are the same...
+  //     if (forBilling === slot) {
+  //       // ...then we just need to validate the one set of values because they are the same
+  //       return Object.keys(billingValid).some(value => !billingValid[value])
+  //     }
+  //     // Otherwise, if we are currently on a different slot than the slot marked for billing, ie billing and shipping are different, then we need to validate both the billing values, and the shipping values
+  //     return (
+  //       Object.keys(billingValid).some(value => !billingValid[value]) ||
+  //       Object.keys(valid).some(value => !valid[value])
+  //     )
+  //   }
+  //   // if no slots were marked for billing, just validate current slot
+  //   return Object.keys(valid).some(value => !valid[value])
+  // }
 
   let steps = [
     {
@@ -144,12 +145,12 @@ export default function CheckoutPortal({ user }) {
         />
       ),
       hasActions: true,
-      error: errorHelper(
-        detailValues,
-        detailForBilling,
-        billingDetails,
-        detailSlot
-      ),
+      // error: errorHelper(
+      //   detailValues,
+      //   detailForBilling,
+      //   billingDetails,
+      //   detailSlot
+      // ),
     },
     {
       title: 'Billing Info',
@@ -164,7 +165,7 @@ export default function CheckoutPortal({ user }) {
           noSlots
         />
       ),
-      error: errorHelper(billingDetails),
+      // error: errorHelper(billingDetails),
     },
     {
       title: 'Address',
@@ -186,12 +187,12 @@ export default function CheckoutPortal({ user }) {
         />
       ),
       hasActions: true,
-      error: errorHelper(
-        locationValues,
-        locationForBilling,
-        billingLocation,
-        locationSlot
-      ),
+      // error: errorHelper(
+      //   locationValues,
+      //   locationForBilling,
+      //   billingLocation,
+      //   locationSlot
+      // ),
     },
     {
       title: 'Billing Address',
@@ -206,7 +207,7 @@ export default function CheckoutPortal({ user }) {
           noSlots
         />
       ),
-      error: errorHelper(billingLocation),
+      // error: errorHelper(billingLocation),
     },
     {
       title: 'Shipping',
