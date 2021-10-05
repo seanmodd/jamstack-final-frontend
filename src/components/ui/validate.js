@@ -15,10 +15,10 @@ export default function validate(values) {
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
         val
       ),
-    street: val =>
-      /^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$/.test(
-        val
-      ),
+    // street: val =>
+    //   /^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$/.test(
+    //     val
+    //   ),
     zip: val => /^\d{5}(-\d{4})?$/.test(val),
     promo: val => true,
     city: val => val.length !== 0,
